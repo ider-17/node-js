@@ -1,1 +1,17 @@
-[{"name":"Ider","seat":"1C","id":"1"},{"name":"Jack"}]
+[
+    {
+        "name": "Ider",
+        "seat": "1C",
+        "id": "1"
+    },
+    {
+        "name": "Jack",
+        "seat": "1A",
+        "id": "2"
+    },
+    {
+        "name": "Chingun",
+        "seat": "1D",
+        "id": "3"
+    }
+]

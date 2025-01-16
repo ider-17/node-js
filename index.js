@@ -33,7 +33,7 @@ import { queryObjects } from 'v8';
 //         console.error(err)
 //     } else {
 //         console.log('no');
-        
+
 //     }
 // });
 
@@ -77,9 +77,9 @@ import { queryObjects } from 'v8';
 
 // fs.writeFile('students.json', newData, err => {
 //     if (err) throw err;
-    
+
 //     console.log("New data edded");
-    
+
 // })
 
 
@@ -109,7 +109,7 @@ import { queryObjects } from 'v8';
 // function removeJsonAttr() {
 // 	let key = "prop_12";
 // 	delete myObj.prop_1[key];
-	
+
 // 	console.log(JSON.stringify(myObj));
 // }
 
@@ -148,25 +148,114 @@ import { queryObjects } from 'v8';
 
 
 
-// create
+// // 1 . create
 
-function createStudent() {
-    const create = fs.writeFileSync('student.json', '[{"name": "Ider", \n"seat": "1C", \n"id": "1"}]')
+// function createStudent() {
+//     const create = fs.writeFileSync('student.json', '[{"name": "Ider", \n"seat": "1C", \n"id": "1"}]')
+// }
+
+// createStudent()
+
+// // 2. read & add
+
+// function readStudent() {
+//     const read = fs.readFileSync('student.json', 'utf-8');
+//     const data = JSON.parse(read)
+//     //    return data
+//     data.push({ "name": "Jack", "seat": "1A", "id": "2" })
+//     fs.writeFileSync('student.json', JSON.stringify(data))
+
+// };
+// readStudent();
+
+// function readStudents() {
+//     const unshih = fs.readFileSync('student.json', 'utf-8');
+//     const medeelel = JSON.parse(unshih, function (id) {
+//         if (id = "2") {
+//             name = "Jackie"
+//             return "done"
+//         } else {
+//             return "fail"
+//         };
+//     });
+
+// }
+
+// readStudents()
+
+
+
+// ---> done
+
+// function readStudents(id) {
+//     const json = fs.readFileSync('student.json', 'utf-8');
+//     const data = JSON.parse(json);
+
+//     if (id) {
+//         return data.find((student) => student.id == id)
+//     }
+
+//     return data 
+// }
+
+// console.log(readStudents(3));
+
+// function updateStudent(id, student) {
+//     const json = fs.readFileSync("student.json", "utf8");
+//     const data = JSON.parse(json);
+
+//     for (let i = 0; i < data.length; i++) {
+//         if (data[i].id == id) {
+//             // spread operator
+//             data[i] =  { ...data[i], ...student };
+//         }
+
+//     }
+
+//     fs.writeFileSync('student.json', JSON.stringify(data));
+
+// }
+
+// updateStudent("3", { seat: "10" });
+
+// ---> end
+
+
+
+
+// ---> done
+
+function readStudents(id) {
+    const json = fs.readFileSync('student.json', 'utf-8');
+    const data = JSON.parse(json);
+
+    if (id) {
+        return data.find((student) => student.id == id)
+    }
+
+    return data
 }
 
-createStudent()
+console.log(readStudents(3));
 
-// read & add
+function updateStudent(id, newStudent) {
+    const json = fs.readFileSync("student.json", 'utf-8');
+    const data = JSON.parse(json);
 
-function readStudent() {
-    const read = fs.readFileSync('student.json', 'utf-8');
-    const data = JSON.parse(read)
-//    return data
-   data.push({"name": "Jack"})
-fs.writeFileSync('student.json', JSON.stringify(data))
-   
+    //  map
+
+    const newData = data.map((oldStudent) => {
+        if (oldStudent.id == id) {
+            oldStudent - { ...oldStudent, ...newStudent }
+        }
+
+        return oldStudent;
+    })
+
+    fs.writeFileSync('student.json', JSON.stringify(data));
+
 }
 
-readStudent();
+updateStudent("3", { seat: "10" });
 
-
+// ---> end
