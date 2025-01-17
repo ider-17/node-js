@@ -223,39 +223,39 @@ import { queryObjects } from 'v8';
 
 
 
-// ---> done
+// // ---> done map
 
-function readStudents(id) {
-    const json = fs.readFileSync('student.json', 'utf-8');
-    const data = JSON.parse(json);
+// function readStudents(id) {
+//     const json = fs.readFileSync('student.json', 'utf-8');
+//     const data = JSON.parse(json);
 
-    if (id) {
-        return data.find((student) => student.id == id)
-    }
+//     if (id) {
+//         return data.find((student) => student.id == id)
+//     }
 
-    return data
-}
+//     return data
+// }
 
-console.log(readStudents(3));
+// console.log(readStudents(3));
 
-function updateStudent(id, newStudent) {
-    const json = fs.readFileSync("student.json", 'utf-8');
-    const data = JSON.parse(json);
+// function updateStudent(id, newStudent) {
+//     const json = fs.readFileSync("student.json", 'utf-8');
+//     const data = JSON.parse(json);
 
-    //  map
+//     //  map
 
-    const newData = data.map((oldStudent) => {
-        if (oldStudent.id == id) {
-            oldStudent - { ...oldStudent, ...newStudent }
-        }
+//     const newData = data.map((oldStudent) => {
+//         if (oldStudent.id == id) {
+//             oldStudent = { ...oldStudent, ...newStudent }
+//         }
 
-        return oldStudent;
-    })
+//         return oldStudent;
+//     })
 
-    fs.writeFileSync('student.json', JSON.stringify(data));
+//     fs.writeFileSync('student.json', JSON.stringify(newData));
 
-}
+// }
 
-updateStudent("3", { seat: "10" });
+// updateStudent("3", { seat: "10" });
 
-// ---> end
+// // ---> end
